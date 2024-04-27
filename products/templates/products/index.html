@@ -1,8 +1,33 @@
 {% extends 'base.html' %}
 
-{% block content %}
+{% load crispy_forms_tags %}
 
-    <p>This is from the HTMl file...</p>
+{% block content %}
+<div class="m-4">
+    <p>This is from the HTML file...</p>
     <p>It was written by <strong>{{ coolest }}</strong></p>
 
+    <br>
+    <br>
+    {% for product in products %}
+    <br>
+    <h2>{{product.title}}</h2>
+    <p>{{product.description}}</p>
+    <p style="color:green">Product ID: #{{product.id}}</p>
+    <h5>€{{product.price}}</h5>
+    <a href="{% url 'delete-item' product.id %}" class="btn btn-outline-danger mt-2 mb-4" role="button">Delete this item</a>
+    <br>
+    {% endfor %}
+
+    <br>
+    <br>
+    <h2 class="mb-4">Do you have a new product to sell?</h2>
+    <div class="col-6">
+        <form id="productForm" method="post" style="margin-top: 1.3em;">
+            {{ product_form | crispy }}
+            {% csrf_token %}
+            <button id="submitButton" type="submit" class="btn btn-outline-primary me-2">Submit</button>
+        </form>
+    </div>
+</div>
 {% endblock %}
