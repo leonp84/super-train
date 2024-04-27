@@ -24,11 +24,11 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = 'temp-key'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     '8000-leonp84-supertrain-05nz07eusfg.ws-eu110.gitpod.io',
-    '*.herokuapp.com',
+    '.herokuapp.com',
 ]
 
 
