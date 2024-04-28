@@ -23,3 +23,6 @@ class Offer(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     commenter = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='user')
+    
+    def __str__(self):
+        return f"Offer by {self.commenter} for {self.product}: €{self.offer}"
