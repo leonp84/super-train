@@ -1,11 +1,12 @@
-p {
-    color: blueviolet;
-}
-
 .test {
     display: flex;
     justify-content: center;
     font-size: xx-large;
     color: black;
     margin: 20px;
+}
+
+.image-container {
+    width: 100%;
+    flex-wrap: wrap;
 }

@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% load crispy_forms_tags %}
 
 {% block content %}
@@ -9,15 +9,28 @@
 
     <br>
     <br>
-    {% for product in products %}
-    <br>
-    <h2>{{product.title}}</h2>
-    <p>{{product.description}}</p>
-    <p style="color:green">Product ID: #{{product.id}}</p>
-    <h5>€{{product.price}}</h5>
-    <a href="{% url 'delete-item' product.id %}" class="btn btn-outline-danger mt-2 mb-4" role="button">Delete this item</a>
-    <br>
-    {% endfor %}
+
+    <div class="image-container d-flex justify-content-evenly align-items-center">
+
+        {% for product in products %}
+        <div class="card m-3" style="width: 18rem;">
+            <a href="{% url 'product-info' product.id %}">
+                <img src="{% static 'images/monitor.jpg' %}" class="card-img-top" alt="Product Image">
+            </a>
+            <div class="card-body">
+                <h4 class="card-title">{{product.title}}</h4>
+                <p class="card-text">{{product.description}}</p>
+                <h5 class="card-text">€{{product.price}}</h5>
+                <p class="card-text small text-green">Product ID: #{{product.id}}</p>
+                <a href="{% url 'delete-item' product.id %}" class="btn btn-outline-danger mt-2 mb-4"
+                    role="button">Delete this item</a>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+
+
 
     <br>
     <br>
